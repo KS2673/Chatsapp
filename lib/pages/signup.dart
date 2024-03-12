@@ -1,20 +1,25 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
-import 'package:random_string/random_string.dart';
 import 'package:chatting_app_flutter/pages/home.dart';
 import 'package:chatting_app_flutter/pages/signin.dart';
 import 'package:chatting_app_flutter/services/database.dart';
 import 'package:chatting_app_flutter/services/sharedpref.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+import 'package:random_string/random_string.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({Key? key}) : super(key: key);
+
+  // final Function toggleView;
+
+  //const SignUp( {super.key, });
 
   @override
   _SignUpState createState() => _SignUpState();
 }
 
 class _SignUpState extends State<SignUp> {
+  bool isLoading = false;
   String email = "", password = "", name = "", confirmPassword = "";
   String phonenumber = "";
 
@@ -25,6 +30,8 @@ class _SignUpState extends State<SignUp> {
   TextEditingController phonenumberController = TextEditingController();
 
   final _formKey = GlobalKey<FormState>();
+
+  void Function() get toggleView => toggleView;
 
   @override
   void dispose() {
@@ -221,7 +228,7 @@ class _SignUpState extends State<SignUp> {
                                   //   return emailRegex.hasMatch(email);
                                   //}
                                   if (!emailRegex.hasMatch(value)) {
-                                    return 'Please enter a valid phone number';
+                                    return 'Please enter a valid email address';
                                   }
 
                                   return null;
@@ -342,7 +349,8 @@ class _SignUpState extends State<SignUp> {
                                       Navigator.pushReplacement(
                                         context,
                                         MaterialPageRoute(
-                                          builder: (context) => const SignIn(),
+                                          builder: (context) =>
+                                              SignIn(toggleView: toggleView),
                                         ),
                                       );
                                     },
@@ -375,7 +383,8 @@ class _SignUpState extends State<SignUp> {
                           confirmPassword = confirmPasswordController.text;
                         });
                       }
-                      registration();
+                      //widget.toggleView();
+                      // registration();
                     },
                     child: Container(
                       padding: const EdgeInsets.all(10),

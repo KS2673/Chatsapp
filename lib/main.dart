@@ -1,7 +1,3 @@
-import 'package:chatting_app_flutter/pages/chatpage.dart';
-import 'package:chatting_app_flutter/pages/forgotpassword.dart';
-import 'package:chatting_app_flutter/pages/home.dart';
-import 'package:chatting_app_flutter/pages/signin.dart';
 import 'package:chatting_app_flutter/pages/signup.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';

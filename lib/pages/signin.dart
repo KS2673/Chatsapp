@@ -7,7 +7,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class SignIn extends StatefulWidget {
-  const SignIn({super.key});
+  // const SignIn({super.key});
+  final Function toggleView;
+
+  const SignIn({super.key, required this.toggleView});
 
   @override
   State<SignIn> createState() => _SignInState();
@@ -190,7 +193,8 @@ class _SignInState extends State<SignIn> {
                                       password = userpasswordcontroller.text;
                                     });
                                   }
-                                  userLogin();
+                                  widget.toggleView();
+                                  // userLogin();
                                 },
                                 child: Center(
                                   child: Container(

@@ -8,6 +8,22 @@ class DatabaseMethods {
         .set(userInfoMap);
   }
 
+  getuserbytheusername(String username) {
+    FirebaseFirestore.instance
+        .collection("users data")
+        .where("name", isEqualTo: username)
+        .get();
+  }
+
+  uploadUserInfo(userMap) {
+    FirebaseFirestore.instance
+        .collection("users data")
+        .add(userMap)
+        .catchError((e) {
+      print(e.toString());
+    });
+  }
+
   Future<QuerySnapshot> getUserbyemail(String email) async {
     return await FirebaseFirestore.instance
         .collection("users")
