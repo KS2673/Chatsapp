@@ -1,15 +1,13 @@
-import 'package:chatting_app_flutter/pages/signup.dart';
+import 'package:chatting_app_flutter/pages/home.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-import 'firebase_options.dart';
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  //Firebase.initializeApp();
+//  Firebase.initializeApp();
   Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+      //   options: DefaultFirebaseOptions.currentPlatform,
+      );
   runApp(const MyApp());
 }
 
@@ -26,6 +24,6 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: SignUp());
+        home: Home());
   }
 }
