@@ -1,13 +1,16 @@
-import 'package:chatting_app_flutter/pages/home.dart';
+import 'package:chatting_app_flutter/pages/signup.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:chatting_app_flutter/pages/home.dart';
 import 'package:flutter/material.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 //  Firebase.initializeApp();
   Firebase.initializeApp(
-      //   options: DefaultFirebaseOptions.currentPlatform,
-      );
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  final fcmToken = await FirebaseMessaging.instance.getToken();
+  log("FCMToken $fcmToken");
   runApp(const MyApp());
 }
 

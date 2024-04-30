@@ -27,10 +27,10 @@ class DefaultFirebaseOptions {
       case TargetPlatform.macOS:
         return macos;
       case TargetPlatform.windows:
-      /*throw UnsupportedError(
+        throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
           'you can reconfigure this by running the FlutterFire CLI again.',
-        );*/
+        );
       case TargetPlatform.linux:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for linux - '
@@ -49,6 +49,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '391097048021',
     projectId: 'chatting-project-flutter-1',
     authDomain: 'chatting-project-flutter-1.firebaseapp.com',
+    databaseURL:
+        'https://chatting-project-flutter-1-default-rtdb.firebaseio.com',
     storageBucket: 'chatting-project-flutter-1.appspot.com',
     measurementId: 'G-9L54KZDSX3',
   );
@@ -58,6 +60,8 @@ class DefaultFirebaseOptions {
     appId: '1:391097048021:android:dd8aa6a316423dc081fb5c',
     messagingSenderId: '391097048021',
     projectId: 'chatting-project-flutter-1',
+    databaseURL:
+        'https://chatting-project-flutter-1-default-rtdb.firebaseio.com',
     storageBucket: 'chatting-project-flutter-1.appspot.com',
   );
 
@@ -66,7 +70,11 @@ class DefaultFirebaseOptions {
     appId: '1:391097048021:ios:9717ff294ccfaaea81fb5c',
     messagingSenderId: '391097048021',
     projectId: 'chatting-project-flutter-1',
+    databaseURL:
+        'https://chatting-project-flutter-1-default-rtdb.firebaseio.com',
     storageBucket: 'chatting-project-flutter-1.appspot.com',
+    iosClientId:
+        '391097048021-fsslnaqrsqb2rj4mkik038auva2dboon.apps.googleusercontent.com',
     iosBundleId: 'com.example.chattingAppFlutter',
   );
 
@@ -75,7 +83,11 @@ class DefaultFirebaseOptions {
     appId: '1:391097048021:ios:60fb9f9785e20f4b81fb5c',
     messagingSenderId: '391097048021',
     projectId: 'chatting-project-flutter-1',
+    databaseURL:
+        'https://chatting-project-flutter-1-default-rtdb.firebaseio.com',
     storageBucket: 'chatting-project-flutter-1.appspot.com',
+    iosClientId:
+        '391097048021-hee5gr1t4vkesfv0tg4jks1itgtodovd.apps.googleusercontent.com',
     iosBundleId: 'com.example.chattingAppFlutter.RunnerTests',
   );
 }

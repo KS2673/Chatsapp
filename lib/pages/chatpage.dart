@@ -1,5 +1,7 @@
-import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:emoji_picker_flutter/emoji_picker_flutter.dart';
+import 'package:flutter/material.dart';
+import 'package:lucide_icons/lucide_icons.dart';
 
 class ChatPage extends StatefulWidget {
   const ChatPage({Key? key, required this.userName}) : super(key: key);
@@ -33,6 +35,46 @@ class _ChatPageState extends State<ChatPage> {
       );
     });
   }
+
+  void sendMessage(String message, String senderId) {
+    FirebaseFirestore.instance.collection('messages').add({
+      'message': message,
+      'senderId': senderId,
+      'timestamp': Timestamp.now(),
+    });
+  }
+
+  Widget buildChat() {
+    return StreamBuilder<QuerySnapshot>(
+      stream: FirebaseFirestore.instance
+          .collection('messages')
+          .orderBy('timestamp')
+          .snapshots(),
+      builder: (context, snapshot) {
+        if (snapshot.hasError) {
+          return Text('Error: ${snapshot.error}');
+        }
+
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return Text('Loading...');
+        }
+
+        final data = snapshot.requireData;
+
+        return ListView.builder(
+          itemCount: data.docs.length,
+          itemBuilder: (context, index) {
+            final message = data.docs[index].data();
+            return ListTile(
+              title: Text('message'),
+              subtitle: Text('senderId'),
+            );
+          },
+        );
+      },
+    );
+  }
+
   // Widget ChatMessageList()
 
   @override
@@ -84,7 +126,7 @@ class _ChatPageState extends State<ChatPage> {
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height / 1.15,
                 decoration: BoxDecoration(
-                  color: Colors.pinkAccent.shade100,
+                  color: Colors.blueAccent.shade100,
                   borderRadius: BorderRadius.only(
                     topRight: Radius.circular(30),
                     topLeft: Radius.circular(30),
@@ -133,7 +175,9 @@ class _ChatPageState extends State<ChatPage> {
                                       _emojiShowing = !_emojiShowing;
                                     });
                                   },
-                                  icon: const Icon(Icons.emoji_emotions),
+                                  icon: Icon(LucideIcons.smile),
+
+                                  //const Icon(Icons.emoji_emotions),
                                 ),
                               ),
                             ],

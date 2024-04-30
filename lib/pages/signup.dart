@@ -349,8 +349,7 @@ class _SignUpState extends State<SignUp> {
                                       Navigator.pushReplacement(
                                         context,
                                         MaterialPageRoute(
-                                          builder: (context) =>
-                                              SignIn(toggleView: toggleView),
+                                          builder: (context) => SignIn(),
                                         ),
                                       );
                                     },
