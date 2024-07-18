@@ -10,7 +10,7 @@ class SignIn extends StatefulWidget {
   //  const SignIn({super.key});
   // final Function toggleView;
 
-  const SignIn({super.key});
+  const SignIn({super.key, required void Function() toggleView});
 
   @override
   State<SignIn> createState() => _SignInState();

@@ -1,16 +1,20 @@
-import 'package:chatting_app_flutter/pages/signup.dart';
+import 'dart:developer';
+
+import 'package:chatting_app_flutter/firebase_options.dart';
+import 'package:chatting_app_flutter/pages/chatpage.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:chatting_app_flutter/pages/home.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-//  Firebase.initializeApp();
-  Firebase.initializeApp(
+  runApp(const MyApp());
+  await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
   final fcmToken = await FirebaseMessaging.instance.getToken();
+  await FirebaseMessaging.instance.setAutoInitEnabled(true);
   log("FCMToken $fcmToken");
+
   runApp(const MyApp());
 }
 
@@ -27,6 +31,8 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: Home());
+        home: ChatPage(
+          userName: '',
+        ));
   }
 }

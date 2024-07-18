@@ -85,12 +85,6 @@ class _ChatPageState extends State<ChatPage> {
         backgroundColor: Colors.lightGreen.shade300,
       ),
       body: Container(
-        margin: const EdgeInsets.only(
-          top: 50.0,
-          left: 20.0,
-          right: 20.0,
-          bottom: 20.0,
-        ),
         child: SingleChildScrollView(
           controller: _scrollController,
           child: Column(
